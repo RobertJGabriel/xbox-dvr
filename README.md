@@ -3,7 +3,7 @@
 ## About
 A small repo that was created in 30 mins. It allows you to read the json file that stores your video links.
 Then display it in a video tag and play muted.
-
+Note this only works on xbox one Gamertags :)
 ## Demo
 See a live demo of it working [here](http://robertjgabriel.github.io/Xbox-One-Gamertag-Videos/).
 ## Setup
