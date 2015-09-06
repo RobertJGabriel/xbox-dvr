@@ -4,13 +4,32 @@
 A small repo that was created in 30 mins. It allows you to read the json file that stores your video links.
 Then display it in a video tag and play muted.
 
+## Demo
+See a live demo of it working [here]().
 ## Setup
 - Include this repo.
 - Have Jquery Installed
-- Have a div called Myvideos
-- Change the Var in the js file to your Gamertag
+- Have a div called videos;
+- See the flags required (random video, gamertag, width ,height)
 - Thats it :)
 
+
+
+## Flags
+To set up this, you will need to make a call to the xboxVideos.Init. <br>
+With the following parameters
+```
+
+<body onload="xboxVideos.Init(0,'Rob Gabriel',300,499);">
+
+
+```
+
+So the paratmars (Flags) you need to send are the following
+- Flag : 1 equals all videos, 0 equals random video.
+- gamerTag : The Gamer Tag you want to get videos from.
+- width : The width of the Video Player.
+- height : The height of the video player.
 
 ## Example of Json File
 
