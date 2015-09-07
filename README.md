@@ -41,6 +41,13 @@ So the paratmars (Flags) you need to send are the following
 - height : The height of the video player.
 
 
+## How do I add it to my Website, Tumblr etc
+
+###Website
+Download or copy the javascript file. And kinda look at the example. Make a call and it will append the results to the div.
+
+###Tumblr Theme
+Coming Soon
 
 ## Example of Screenshot Json File
 
