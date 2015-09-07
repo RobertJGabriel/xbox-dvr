@@ -1,4 +1,12 @@
-# Xbox-One-Gamertag-Videos
+# Display Xbox One Video Game Recordings on our Website
+
+
+
+
+
+![alt text](https://d13yacurqjgara.cloudfront.net/users/303272/screenshots/1082051/xbox_controller.png " Logo
+by Felipe Santana")
+
 
 ## About
 A small repo that was created in 30 mins. It allows you to read the json file that stores your video links.
