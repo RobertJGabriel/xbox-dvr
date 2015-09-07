@@ -1,9 +1,9 @@
-var videosSrc = [];
-var numberOfVideos = 0;
+var mediaSrc = [];
+var numberOfVideos, numberOfScreenshots = 0;
 var videoWidth = 0;
 var videoHeight = 0;
 var getType = null;
-var xboxVideos = {
+var xboxOneMedia = {
     Init: function (flag, media, gamerTag, width, height) {
         videoWidth = width;
         videoHeight = height;
@@ -13,13 +13,11 @@ var xboxVideos = {
             type: "GET",
             dataType: "json",
             success: function (data) {
-                console.log(data);
                 if (media === 'gameclips') {
                     getGameclips(data, flag);
                 } else {
                     getScreenshots(data, flag);
                 }
-
             }
         });
     }
@@ -28,22 +26,23 @@ var xboxVideos = {
 
 function getGameclips(data, flag) {
     numberOfVideos = data.GameClips.length;
+    console.log(data);
+    console.log(data.GameClips.length);
     var i;
     for (i = 0; i < numberOfVideos; i++) {
-        var temp = data.GameClips[i]['Uri'];
-        videosSrc.push(temp);
+        var temp = data.GameClips[i]['ClipUri'];
+        mediaSrc.push(temp);
     }
     renderMedia(flag);
 }
 
 function getScreenshots(data, flag) {
 
-    numberOfVideos = data.data.Screenshots.length;
-
+    numberOfScreenshots = data.data.Screenshots.length;
     var i;
-    for (i = 0; i < numberOfVideos; i++) {
+    for (i = 0; i < numberOfScreenshots; i++) {
         var temp = data.data.Screenshots[i]['Uri'];
-        videosSrc.push(temp);
+        mediaSrc.push(temp);
     }
     renderMedia(flag);
 }
@@ -58,16 +57,14 @@ function gamerTagValadator(gamerTag) {
 function createImage(src) {
     var x = document.createElement("img");
     var xboxDiv = document.getElementById("xboxOneMedia");
-
     x.setAttribute("src", src);
-
     x.setAttribute("width", videoWidth);
     x.setAttribute("height", videoHeight);
-
     xboxDiv.appendChild(x);
 }
 
 function createVideo(src) {
+    console.log(src);
     var x = document.createElement("VIDEO");
     var videoDiv = document.getElementById("xboxOneMedia");
     if (x.canPlayType("video/mp4")) {
@@ -83,21 +80,20 @@ function createVideo(src) {
 
 function renderMedia(flag) {
     var i;
-    var randomNumber = Math.floor(Math.random() * videosSrc.length) + 0;
+    var randomNumber = Math.floor(Math.random() * mediaSrc.length) + 0;
     if (flag === 1) {
-        for (i = 0; i < videosSrc.length; i++) {
+        for (i = 0; i < mediaSrc.length; i++) {
             if (getType === 'gameclips') {
-                createVideo(videosSrc[i]);
+                createVideo(mediaSrc[i]);
             } else {
-                createImage(videosSrc[i]);
+                createImage(mediaSrc[i]);
             }
-
         }
-    } else if (flag === 0) {
+    } else {
         if (getType === 'gameclips') {
-            createVideo(videosSrc[randomNumber]);
+            createVideo(mediaSrc[randomNumber]);
         } else {
-            createImage(videosSrc[randomNumber]);
+            createImage(mediaSrc[randomNumber]);
 
         }
     }
