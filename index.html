@@ -2,14 +2,61 @@
 
 <head>
     <title> Xbox Video Rss Feeder</title>
+    <!-- Latest jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="application/javascript" src="assests/js/xboxvideos.js"></script>
+    <!-- Xboxmedia Codex -->
+    <script type="application/javascript" src="assests/js/xboxonemedia.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <link rel="stylesheet" href="assests/css/style.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 
-<body onload="xboxVideos.Init(1,'Rob Gabriel',899,899);">
+<body onload="xboxOneMedia.Init(1,'gameclips','Rob Gabriel',450,450);">
 
 
-    <div id="videos"></div>
+
+
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6" id="logos">
+                <img src="https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/128/xbox.png" width="128" height="128" alt="Xbox One video and screenshot">
+                <h2>Display Xbox One Video Game Recordings & Screenshots on our Website</h2>
+                <h5>Add Your videos to your site <a href="https://github.com/RobertJGabriel/Xbox-One-Gamertag-Videos" alt="Xbo Github" >Now</a></h5>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+
+        <div class="row">
+
+
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div id="xboxOneMedia"></div>
+            </div>
+            <div class="col-sm-3"></div>
+
+        </div>
+
+
+    </div>
+    <!-- /container -->
+
+
+
+
+
+
+
+
+
 
 </body>
 
