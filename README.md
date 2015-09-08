@@ -1,4 +1,4 @@
-# Display Xbox One Video Game Recordings on our Website
+# Display Xbox One Video Game Recordings & Screenshots on our Website
 
 
 
