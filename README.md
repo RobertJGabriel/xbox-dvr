@@ -421,3 +421,8 @@ Coming Soon
 
 
 ```
+
+## Roadmap 
+The more people help the fast we can share :)
+- Download videos and Screenshots
+- See Friends list and there game videos and screenshots 
