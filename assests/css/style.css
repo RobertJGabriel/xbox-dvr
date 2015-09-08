@@ -1,0 +1,17 @@
+body {
+    background-color: #107c10 !important;
+}
+.container {
+    margin-top: 160px;
+}
+#xboxOneMedia >* {
+    margin: 40px auto;
+    height: 400px;
+    width: 400px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+#logos {
+    text-align: center;
+}

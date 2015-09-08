@@ -60,6 +60,7 @@ function createImage(src) {
     x.setAttribute("src", src);
     x.setAttribute("width", mediaWidth);
     x.setAttribute("height", mediaHeight);
+    x.setAttribute("class", "img-responsive center-block");
     xboxDiv.appendChild(x);
 }
 
@@ -74,6 +75,7 @@ function createVideo(src) {
     x.setAttribute("width", mediaWidth);
     x.setAttribute("height", mediaHeight);
     x.setAttribute("controls", "controls");
+    x.setAttribute("class", "img-responsive center-block");
     videoDiv.appendChild(x);
 }
 
