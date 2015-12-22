@@ -4,15 +4,16 @@ var mediaWidth, mediaHeight = 0;
 var getType = null;
 
 var xboxOneMedia = {
-    Init: function (flag, type, gamerTag, width, height) {
+    Init: function (flag, type, gamerTag, width, height,limit) {
         mediaWidth = width;
         mediaHeight = height;
         getType = type;
+        numberOfVideos = typeof limit !== 'undefined' ? limit:null;
+        numberOfScreenshots = typeof limit !== 'undefined' ? limit:null;
+
         makeXboxCall(flag, type, gamerTag);
     }
 };
-
-
 
 function makeXboxCall(flag, type, gamerTag) {
     $.ajax({
@@ -40,9 +41,11 @@ function getGameclips(data, flag) {
 }
 
 function getScreenshots(data, flag) {
-    numberOfScreenshots = data.data.Screenshots.length;
+    console.log(numberOfScreenshots);
+    var limit =  numberOfScreenshots !== 'null' ? data.data.Screenshots.length:numberOfScreenshots;
+    console.log(limit);
     var i;
-    for (i = 0; i < numberOfScreenshots; i++) {
+    for (i = 0; i < limit; i++) {
         var temp = data.data.Screenshots[i]['Uri'];
         mediaSrc.push(temp);
     }
