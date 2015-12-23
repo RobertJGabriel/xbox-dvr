@@ -28,7 +28,7 @@ To set up this, you will need to make a call to the xboxVideos.Init. <br>
 With the following parameters
 ```
 
-<body onload="xboxOneMedia.Init(0,'screenshots','Rob Gabriel',899,899);">
+<body onload="xboxOneMedia.Init(0,'screenshots','Rob Gabriel',899,899,1);">
 
 
 ```
@@ -39,7 +39,7 @@ So the paratmars (Flags) you need to send are the following
 - gamerTag : The Gamer Tag you want to get videos from.
 - width : The width of the Video Player.
 - height : The height of the video player.
-
+- Number of Videos/images : Incase you want to limit it.
 
 ## How do I add it to my Website, Tumblr etc
 
