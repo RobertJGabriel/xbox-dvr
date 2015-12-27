@@ -50,7 +50,6 @@ function getScreenshots(data, flag, limits) {
         mediaSrc.push(temp);
         screenPreview.push(preview);
     }
-
     screenPreview.reverse(); //Latests to oldest
     renderMedia(flag, limits);
 }
