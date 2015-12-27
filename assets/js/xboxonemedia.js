@@ -61,7 +61,11 @@ function createImage(src) {
     x.setAttribute("src", src);
     x.setAttribute("width", mediaWidth);
     x.setAttribute("height", mediaHeight);
-    xboxDiv.appendChild(x);
+    x.setAttribute("class", "shadow-z-1 img-responsive img-thumbnail");
+    var link = document.createElement("A");
+    link.setAttribute("href", src);
+    link.appendChild(x);
+    xboxDiv.appendChild(link);
 }
 
 function createVideo(src) {
@@ -74,6 +78,7 @@ function createVideo(src) {
     }
     x.setAttribute("width", mediaWidth);
     x.setAttribute("height", mediaHeight);
+    x.setAttribute("class", "shadow-z-1 img-responsive img-thumbnail");
     x.setAttribute("controls", "controls");
     videoDiv.appendChild(x);
 }
