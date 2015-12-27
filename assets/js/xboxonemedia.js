@@ -1,4 +1,5 @@
 var mediaSrc = [];
+var screenPreview = [];
 var limits = 0;
 var mediaWidth, mediaHeight = 0;
 var getType = null;
@@ -45,8 +46,12 @@ function getScreenshots(data, flag, limits) {
     var i;
     for (i = 0; i < limits; i++) {
         var temp = data.data.Screenshots[i]['Uri'];
+        var preview = data.data.Screenshots[i]['Thumbnail'];
         mediaSrc.push(temp);
+        screenPreview.push(preview);
     }
+
+    screenPreview.reverse(); //Latests to oldest
     renderMedia(flag, limits);
 }
 
@@ -55,10 +60,10 @@ function gamerTagValadator(gamerTag) {
     return valadated_Gamer_Tag;
 }
 
-function createImage(src) {
+function createImage(src, previewImage) {
     var x = document.createElement("img");
     var xboxDiv = document.getElementById("xboxOneMedia");
-    x.setAttribute("src", src);
+    x.setAttribute("src", previewImage);
     x.setAttribute("width", mediaWidth);
     x.setAttribute("height", mediaHeight);
     x.setAttribute("class", "shadow-z-1 img-responsive img-thumbnail");
@@ -92,7 +97,7 @@ function renderMedia(flag, limits) {
             if (getType === 'gameclips') {
                 createVideo(mediaSrc[i]);
             } else {
-                createImage(mediaSrc[i]);
+                createImage(mediaSrc[i], screenPreview[i]);
             }
         }
     } else {
