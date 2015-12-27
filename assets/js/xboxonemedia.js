@@ -4,48 +4,50 @@ var mediaWidth, mediaHeight = 0;
 var getType = null;
 
 var xboxOneMedia = {
-    Init: function (flag, type, gamerTag, width, height,limit) {
+    Init: function (flag, type, gamerTag, width, height, limit) {
+        mediaSrc = []; //Clear sources
+        document.getElementById("xboxOneMedia").innerHTML = ""; //Clear div
         mediaWidth = width;
         mediaHeight = height;
         getType = type;
-        limits = typeof limit !== 'undefined' ? limit:0;
-        makeXboxCall(flag, type, gamerTag,limits);
+        limits = typeof limit !== 'undefined' ? limit : 0;
+        makeXboxCall(flag, type, gamerTag, limits);
     }
 };
 
-function makeXboxCall(flag, type, gamerTag,limits) {
+function makeXboxCall(flag, type, gamerTag, limits) {
     $.ajax({
         url: 'https://account.xbox.com/en-us/' + getType + '/loadByUser?gamerTag=' + gamerTagValadator(gamerTag),
         type: "GET",
         dataType: "json",
         success: function (data) {
             if (getType === 'gameclips') {
-                getGameclips(data, flag,limits);
+                getGameclips(data, flag, limits);
             } else {
-                getScreenshots(data, flag,limits);
+                getScreenshots(data, flag, limits);
             }
         }
     });
 }
 
-function getGameclips(data, flag,limits) {
-    limits = limits === 0 ? data.GameClips.length:limits;
+function getGameclips(data, flag, limits) {
+    limits = limits === 0 ? data.GameClips.length : limits;
     var i;
     for (i = 0; i < limits; i++) {
         var temp = data.GameClips[i]['ClipUri'];
         mediaSrc.push(temp);
     }
-    renderMedia(flag,limits);
+    renderMedia(flag, limits);
 }
 
-function getScreenshots(data, flag,limits) {
-    limits = limits === 0 ? data.data.Screenshots.length:limits;
+function getScreenshots(data, flag, limits) {
+    limits = limits === 0 ? data.data.Screenshots.length : limits;
     var i;
     for (i = 0; i < limits; i++) {
         var temp = data.data.Screenshots[i]['Uri'];
         mediaSrc.push(temp);
     }
-    renderMedia(flag,limits);
+    renderMedia(flag, limits);
 }
 
 function gamerTagValadator(gamerTag) {
@@ -76,7 +78,7 @@ function createVideo(src) {
     videoDiv.appendChild(x);
 }
 
-function renderMedia(flag,limits) {
+function renderMedia(flag, limits) {
     var i;
     var randomNumber = Math.floor(Math.random() * mediaSrc.length) + 0;
     if (flag === 1) {
