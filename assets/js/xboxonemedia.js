@@ -85,6 +85,7 @@ function createVideo(src) {
 
 function renderMedia(flag, limits) {
     var i;
+    mediaSrc.reverse();
     var randomNumber = Math.floor(Math.random() * mediaSrc.length) + 0;
     if (flag === 1) {
         for (i = 0; i < mediaSrc.length; i++) {
