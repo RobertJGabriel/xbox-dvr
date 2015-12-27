@@ -1,7 +1,4 @@
-#frames {
-    width: 200px;
-    height: 145px;
-}
-p {
-    margin: 0px !important;
+video,
+.img-thumbnail {
+    margin-bottom: 50px;
 }
