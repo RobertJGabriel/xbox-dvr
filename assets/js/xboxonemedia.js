@@ -87,6 +87,8 @@ function createVideo(src) {
     videoDiv.appendChild(x);
 }
 
+
+
 function renderMedia(flag, limits) {
     var i;
     mediaSrc.reverse(); //Latests to oldest
