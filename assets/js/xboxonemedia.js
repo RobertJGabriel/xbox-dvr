@@ -3,10 +3,13 @@ var screenPreview = [];
 var limits = 0;
 var mediaWidth, mediaHeight = 0;
 var getType = null;
+var token = '';
+var myBtn = document.getElementById('buttonSearch');
 
 var xboxOneMedia = {
     Init: function (flag, type, gamerTag, width, height, limit) {
-        mediaSrc = []; //Clear sources
+        console.log(getType + type)
+        getType === type ? console.log('test') : mediaSrc = [], screenPreview = [];
         document.getElementById("xboxOneMedia").innerHTML = ""; //Clear div
         mediaWidth = width;
         mediaHeight = height;
@@ -17,16 +20,21 @@ var xboxOneMedia = {
 };
 
 function makeXboxCall(flag, type, gamerTag, limits) {
+
+    myBtn.innerHTML = "loading ......"; //Clear div
+    token === 'undefined' ? token = '' : token = '';
     $.ajax({
-        url: 'https://account.xbox.com/en-us/' + getType + '/loadByUser?gamerTag=' + gamerTagValadator(gamerTag),
+        url: 'https://account.xbox.com/en-us/' + getType + '/loadByUser?gamerTag=' + gamerTagValadator(gamerTag) + '&ContinuationToken=' + token,
         type: "GET",
         dataType: "json",
         success: function (data) {
-            if (getType === 'gameclips') {
-                getGameclips(data, flag, limits);
-            } else {
-                getScreenshots(data, flag, limits);
+            data.ContinuationToken !== 'undefined' ? token = data.ContinuationToken : token = '';
+            getType === 'gameclips' ? getGameclips(data, flag, limits) : getScreenshots(data, flag, limits);
+            if (token === undefined || token === null) {
+                myBtn.innerHTML = "All Media Loaded"; //Clear div
+                myBtn.disabled = true;
             }
+
         }
     });
 }
@@ -36,7 +44,9 @@ function getGameclips(data, flag, limits) {
     var i;
     for (i = 0; i < limits; i++) {
         var temp = data.GameClips[i]['ClipUri'];
+        var preview = data.GameClips[i]['Thumbnail'];
         mediaSrc.push(temp);
+        screenPreview.push(preview);
     }
     renderMedia(flag, limits);
 }
@@ -50,7 +60,7 @@ function getScreenshots(data, flag, limits) {
         mediaSrc.push(temp);
         screenPreview.push(preview);
     }
-    screenPreview.reverse(); //Latests to oldest
+
     renderMedia(flag, limits);
 }
 
@@ -72,7 +82,7 @@ function createImage(src, previewImage) {
     xboxDiv.appendChild(link);
 }
 
-function createVideo(src) {
+function createVideo(src, poster) {
     var x = document.createElement("VIDEO");
     var videoDiv = document.getElementById("xboxOneMedia");
     if (x.canPlayType("video/mp4")) {
@@ -80,7 +90,9 @@ function createVideo(src) {
     } else {
         x.setAttribute("src", src);
     }
+    x.setAttribute("preload", "none");
     x.setAttribute("width", mediaWidth);
+    x.setAttribute("poster", poster);
     x.setAttribute("height", mediaHeight);
     x.setAttribute("class", "shadow-z-1 img-responsive img-thumbnail");
     x.setAttribute("controls", "controls");
@@ -91,21 +103,21 @@ function createVideo(src) {
 
 function renderMedia(flag, limits) {
     var i;
-    mediaSrc.reverse(); //Latests to oldest
     var randomNumber = Math.floor(Math.random() * mediaSrc.length) + 0;
     if (flag === 1) {
         for (i = 0; i < mediaSrc.length; i++) {
             if (getType === 'gameclips') {
-                createVideo(mediaSrc[i]);
+                createVideo(mediaSrc[i], screenPreview[i]);
             } else {
                 createImage(mediaSrc[i], screenPreview[i]);
             }
         }
     } else {
         if (getType === 'gameclips') {
-            createVideo(mediaSrc[randomNumber]);
+            createVideo(mediaSrc[randomNumber], screenPreview[randomNumber]);
         } else {
-            createImage(mediaSrc[randomNumber]);
+            createImage(mediaSrc[randomNumber], screenPreview[randomNumber]);
         }
     }
+    myBtn.innerHTML = "Load More"; //Clear div
 }

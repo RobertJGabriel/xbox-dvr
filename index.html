@@ -8,12 +8,6 @@
     <link href="assets/css/bootstrap/material.css" rel="stylesheet">
     <link href="assets/css/bootstrap/ripples.css" rel="stylesheet">
     <link href="assets/css/bootstrap/default.css" rel="stylesheet">
-    <script src="assets/js/xboxonemedia.js"></script>
-    <script src="assets/js/angular.js"></script>
-    <script src="assets/js/angular-chrome-storage.js"></script>
-    <script src="assets/js/core.js"></script>
-
-
 </head>
 
 <body ng-app="xboxviewer" ng-controller="core" data-ng-init="init()" id="frames">
@@ -78,7 +72,7 @@
                                 </div>
                                 <div class="form-group">
 
-                                    <a href="javascript:void(0)" ng-click="search()" class="btn btn-block btn-raised btn-warning">Search</a>
+                                    <a href="javascript:void(0)" id="buttonSearch" ng-click="search()" class="btn btn-block btn-raised btn-warning">Search</a>
 
                                 </div>
                             </fieldset>
@@ -92,7 +86,10 @@
             <div class="col-md-3 col-xs-3 col-sm-3"></div>
         </div>
     </div>
-
+    <script src="assets/js/xboxonemedia.js"></script>
+    <script src="assets/js/angular.js"></script>
+    <script src="assets/js/angular-chrome-storage.js"></script>
+    <script src="assets/js/core.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/ripples.js"></script>
