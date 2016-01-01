@@ -4,13 +4,13 @@ var limits = 0;
 var mediaWidth, mediaHeight = 0;
 var getType = null;
 var token = '';
-
+var content = document.getElementById('xboxOneMedia');
 
 var xboxOneMedia = {
     Init: function (flag, type, gamerTag, width, height, limit) {
         console.log(getType + type)
         getType === type ? console.log('test') : mediaSrc = [], screenPreview = [];
-        document.getElementById("xboxOneMedia").innerHTML = ""; //Clear div
+        content.innerHTML = ""; //Clear div
         mediaWidth = width;
         mediaHeight = height;
         getType = type;
@@ -32,7 +32,6 @@ function makeXboxCall(flag, type, gamerTag, limits) {
             if (token === undefined || token === null) {
                 console.log('No More to load');
             }
-
         }
     });
 }
