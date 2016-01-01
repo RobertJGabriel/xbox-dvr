@@ -29,7 +29,9 @@ function makeXboxCall(flag, type, gamerTag, limits) {
         success: function (data) {
             data.ContinuationToken !== 'undefined' ? token = data.ContinuationToken : token = '';
             getType === 'gameclips' ? getGameclips(data, flag, limits) : getScreenshots(data, flag, limits);
-            if (token === undefined || token === null) {}
+            if (token === undefined || token === null) {
+                console.log('No More to load');
+            }
 
         }
     });
