@@ -79,58 +79,57 @@ function createImage(src, previewImage, title, uploadTime) {
     x.setAttribute("src", previewImage);
     x.setAttribute("width", mediaWidth);
     x.setAttribute("height", mediaHeight);
-    x.setAttribute("class", "img-responsive img-thumbnail");
+    x.setAttribute("class", "img-responsive ");
     var link = document.createElement("A");
     link.setAttribute("href", src);
     link.setAttribute("class", "thumbnail");
     link.appendChild(x);
-    var holding = document.createElement("div");
-    holding.setAttribute("class", "panel panel-default");
-    holding.appendChild(x);
-
-    var h1 = document.createElement("h3");
-    var text = document.createTextNode(title);
-    h1.appendChild(text);
-
-    var h5 = document.createElement("h5");
-    text = document.createTextNode("Uploaded on " + uploadTime);
-    h5.appendChild(text);
-
-    holding.appendChild(h1);
-    holding.appendChild(h5);
-    xboxDiv.appendChild(holding);
+    xboxDiv.appendChild(createPanel(link, title, uploadTime));
 
 
 }
 
 function createVideo(src, poster, title, uploadTime) {
     var x = document.createElement("VIDEO");
-    if (x.canPlayType("video/mp4")) {
-        x.setAttribute("src", src);
-    } else {
-        x.setAttribute("src", src);
-    }
+    x.canPlayType("video/mp4") === true ? x.setAttribute("src", src) : x.setAttribute("src", src);
     x.setAttribute("preload", "none");
     x.setAttribute("width", mediaWidth);
     x.setAttribute("poster", poster);
     x.setAttribute("height", mediaHeight);
-    x.setAttribute("class", "img-responsive img-thumbnail");
+    x.setAttribute("class", "img-responsive ");
     x.setAttribute("controls", "controls");
-    var holding = document.createElement("div");
-    holding.setAttribute("class", "panel panel-default");
-    holding.appendChild(x);
 
-    var h1 = document.createElement("h3");
-    var text = document.createTextNode(title);
-    h1.appendChild(text);
+    xboxDiv.appendChild(createPanel(x, title, uploadTime));
+}
 
-    var h5 = document.createElement("h5");
-    text = document.createTextNode("Uploaded on " + uploadTime);
-    h5.appendChild(text);
 
-    holding.appendChild(h1);
-    holding.appendChild(h5);
-    xboxDiv.appendChild(holding);
+function createPanel(media, title, uploadTime) {
+    var panel = document.createElement("div");
+    panel.setAttribute("class", "panel panel-primary");
+
+
+    var panelHeading = document.createElement("div");
+    panelHeading.setAttribute("class", "panel-heading");
+
+    var h3 = document.createElement("h3");
+    h3.setAttribute("class", "panel-title");
+    var text = document.createTextNode(title + "  " + uploadTime);
+    h3.appendChild(text);
+
+    panelHeading.appendChild(h3);
+
+    var panelBody = document.createElement("div");
+    panelBody.setAttribute("class", "panel-body");
+    panelBody.appendChild(media);
+    panel.appendChild(panelHeading);
+    panel.appendChild(panelBody);
+
+
+    return panel;
+
+
+
+
 }
 
 
