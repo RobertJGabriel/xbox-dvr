@@ -13,7 +13,7 @@ A small repo that was created in 30 mins. It allows you to read the json file th
 Then display it in a video tag and play muted.
 Note this only works on xbox one Gamertags :)
 ## Demo
-See a live demo of it working [here](http://robertjgabriel.github.io/Xbox-One-Gamertag-Videos/).
+See a live demo of it working [here](http://robertjgabriel.github.io/xbox-dvr/).
 ## Setup
 - Include this repo.
 - Have Jquery Installed
