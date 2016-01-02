@@ -15,6 +15,8 @@ var xboxOneMedia = {
     Init: function (flag, type, gamerTag, width, height, limit) {
         getType !== type ? screenPreview = [] : 0;
         getType !== type ? mediaSrc = [] : 0;
+        getType !== type ? uploadTime = [] : 0;
+        getType !== type ? title = [] : 0;
         xboxDiv.innerHTML = ""; //Clear div
         mediaWidth = width;
         mediaHeight = height;
