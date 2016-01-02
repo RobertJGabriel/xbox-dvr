@@ -127,18 +127,12 @@ function renderMedia(flag, limits) {
     var randomNumber = Math.floor(Math.random() * mediaSrc.length) + 0;
     if (flag === 1) {
         for (i = 0; i < mediaSrc.length; i++) {
-            if (getType === 'gameclips') {
-                createVideo(mediaSrc[i], screenPreview[i], title[i], uploadTime[i]);
-            } else {
-                createImage(mediaSrc[i], screenPreview[i], title[i], uploadTime[i]);
-            }
+            getType === 'gameclips' ? createVideo(mediaSrc[i], screenPreview[i], title[i], uploadTime[i]) : createImage(mediaSrc[i], screenPreview[i], title[i], uploadTime[i]);
+            
         }
     } else {
-        if (getType === 'gameclips') {
-            createVideo(mediaSrc[randomNumber], screenPreview[randomNumber], title[randomNumber], uploadTime[randomNumber]);
-        } else {
-            createImage(mediaSrc[randomNumber], screenPreview[randomNumber], title[randomNumber], uploadTime[randomNumber]);
-        }
+    getType === 'gameclips' ? createVideo(mediaSrc[randomNumber], screenPreview[randomNumber], title[randomNumber], uploadTime[randomNumber]) :
+            createImage(mediaSrc[randomNumber], screenPreview[randomNumber], title[randomNumber], uploadTime[randomNumber]);   
     }
     myBtn.innerHTML = "Load More"; //Clear div
 }
