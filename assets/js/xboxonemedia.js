@@ -13,7 +13,6 @@ var xboxDiv = document.getElementById('xboxOneMedia');
 
 var xboxOneMedia = {
     Init: function (flag, type, gamerTag, width, height, limit) {
-
         getType !== type ? screenPreview = [] : 0;
         getType !== type ? mediaSrc = [] : 0;
         xboxDiv.innerHTML = ""; //Clear div
@@ -58,13 +57,11 @@ function getScreenshots(data, flag, limits) {
     limits = limits === 0 ? data.data.Screenshots.length : limits;
     var i;
     for (i = 0; i < limits; i++) {
-
         title.push(data.data.Screenshots[i]['TitleName']);
         uploadTime.push(data.data.Screenshots[i]['CaptureTime']);
         mediaSrc.push(data.data.Screenshots[i]['Uri']);
         screenPreview.push(data.data.Screenshots[i]['Thumbnail']);
     }
-
     renderMedia(flag, limits);
 }
 
@@ -75,63 +72,54 @@ function gamerTagValadator(gamerTag) {
 
 function createImage(src, previewImage, title, uploadTime) {
     var x = document.createElement("img");
-
-    x.setAttribute("src", previewImage);
-    x.setAttribute("width", mediaWidth);
-    x.setAttribute("height", mediaHeight);
-    x.setAttribute("class", "img-responsive ");
+        x.setAttribute("src", previewImage);
+        x.setAttribute("width", mediaWidth);
+        x.setAttribute("height", mediaHeight);
+        x.setAttribute("class", "img-responsive ");
     var link = document.createElement("A");
-    link.setAttribute("href", src);
-    link.setAttribute("class", "thumbnail");
-    link.appendChild(x);
+        link.setAttribute("href", src);
+        link.setAttribute("class", "thumbnail");
+        link.appendChild(x);
     xboxDiv.appendChild(createPanel(link, title, uploadTime));
-
-
 }
 
 function createVideo(src, poster, title, uploadTime) {
     var x = document.createElement("VIDEO");
-    x.canPlayType("video/mp4") === true ? x.setAttribute("src", src) : x.setAttribute("src", src);
-    x.setAttribute("preload", "none");
-    x.setAttribute("width", mediaWidth);
-    x.setAttribute("poster", poster);
-    x.setAttribute("height", mediaHeight);
-    x.setAttribute("class", "img-responsive ");
-    x.setAttribute("controls", "controls");
-
+        x.canPlayType("video/mp4") === true ? x.setAttribute("src", src) : x.setAttribute("src", src);
+        x.setAttribute("preload", "none");
+        x.setAttribute("width", mediaWidth);
+        x.setAttribute("poster", poster);
+        x.setAttribute("height", mediaHeight);
+        x.setAttribute("class", "img-responsive ");
+        x.setAttribute("controls", "controls");
     xboxDiv.appendChild(createPanel(x, title, uploadTime));
 }
 
 
 function createPanel(media, title, uploadTime) {
     var panel = document.createElement("div");
-    panel.setAttribute("class", "panel panel-primary");
-
+        panel.setAttribute("class", "panel panel-primary");
 
     var panelHeading = document.createElement("div");
-    panelHeading.setAttribute("class", "panel-heading");
+        panelHeading.setAttribute("class", "panel-heading");
 
     var h3 = document.createElement("h3");
-    h3.setAttribute("class", "panel-title");
+        h3.setAttribute("class", "panel-title");
+    
     var text = document.createTextNode(title + "  " + uploadTime);
-    h3.appendChild(text);
+        h3.appendChild(text);
 
     panelHeading.appendChild(h3);
 
     var panelBody = document.createElement("div");
-    panelBody.setAttribute("class", "panel-body");
-    panelBody.appendChild(media);
+        panelBody.setAttribute("class", "panel-body");
+        panelBody.appendChild(media);
+   
     panel.appendChild(panelHeading);
     panel.appendChild(panelBody);
 
-
     return panel;
-
-
-
-
 }
-
 
 
 function renderMedia(flag, limits) {
