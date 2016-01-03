@@ -9,8 +9,6 @@ var token = '';
 var myBtn = document.getElementById('buttonSearch');
 var xboxDiv = document.getElementById('xboxOneMedia');
 
-
-
 var xboxOneMedia = {
     Init: function (flag, type, gamerTag, width, height, limit) {
         getType !== type ? screenPreview = [] : 0;
